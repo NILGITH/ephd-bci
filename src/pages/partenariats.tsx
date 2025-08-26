@@ -49,7 +49,7 @@ const partnerships = [
     name: "Ministère de la Santé et de l'Hygiène Publique",
     type: "Partenariat Institutionnel",
     description: "Collaboration officielle dans le cadre des politiques nationales de santé publique.",
-    image: "/images/couverture.jpg",
+    image: "/images/ministère.png",
     since: "2020",
     activities: [
       "Campagnes de vaccination",
@@ -63,7 +63,7 @@ const partnerships = [
     name: "ONG Médecins Sans Frontières",
     type: "Partenariat Humanitaire",
     description: "Collaboration pour les missions humanitaires et l'amélioration de l'accès aux soins.",
-    image: "/images/medecinsansfrontière.jpg",
+    image: "/images/medecin.jpg",
     since: "2022",
     activities: [
       "Missions médicales",

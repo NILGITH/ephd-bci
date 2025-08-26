@@ -55,7 +55,7 @@ const actualites = [
     title: "Modernisation du laboratoire : Nouveaux équipements d'analyses médicales",
     excerpt: "Investissement majeur dans l'équipement du laboratoire pour des analyses plus rapides et précises.",
     content: "L'EPHD de Bingerville vient d'acquérir de nouveaux équipements d'analyses médicales de dernière génération. Ces investissements permettent d'offrir des résultats plus rapides et plus précis à nos patients. Le laboratoire peut désormais traiter un plus grand volume d'échantillons et proposer de nouveaux types d'analyses spécialisées, améliorant significativement notre capacité diagnostique.",
-    image: "https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=800&h=600&fit=crop",
+    image: "/images/images.jpg",
     date: "10 Novembre 2024",
     category: "Équipement",
     author: "Direction Technique",

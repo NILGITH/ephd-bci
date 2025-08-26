@@ -23,6 +23,7 @@ import {
   Menu
 } from "lucide-react";
 import { useState } from "react";
+import Link from "next/link";
 
 const contactInfo = [
   {
@@ -382,13 +383,16 @@ export default function ContactPage() {
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </Button>
           </div>
-            <Button 
+          <Link href="https://www.google.com/maps/dir//Hôpital+Général+de+Bingerville+9467%2B4PH+Bingerville/@5.3603125,-3.8856406,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0xfc1f2eaae9b8d3d:0xfa3287a75ddb7801!2m2!1d-3.8856406!2d5.3603125?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D">
+          <Button 
               variant="outline" 
               className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-red-600 px-8 py-4 rounded-xl font-bold transition-all duration-200 text-lg"
             >
               <Building2 className="h-5 w-5 mr-2" />
               Se rendre aux urgences
             </Button>
+          </Link>
+           
           </div>
         </div>
       </section>

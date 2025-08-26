@@ -22,14 +22,14 @@ const leadership = [
     description: "20 ans d'expérience in management hospitalier"
   },
   {
-    name: "Dr. Jean DIABATE",
-    position: "Chef de Service Médecine",
+    name: "Dr ODEHOURI-KOUDOU  Yannick DGA",
+    position: "DGA",
     image: "/images/user-profile.svg",
     description: "Spécialiste en médecine interne"
   },
   {
-    name: "Dr. Awa TRAORE",
-    position: "Chef de Service Maternité",
+    name: "Dr KOUAME Thérèse",
+    position: "Médecin Chef",
     image: "/images/user-profile.svg",
     description: "Gynécologue-obstétricienne experte"
   },
