@@ -6,11 +6,11 @@ import { motion, useAnimation, animate } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Playfair_Display } from "next/font/google";
 import { cn } from "@/lib/utils";
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
   Heart,
   Users,
   Building2,
@@ -18,7 +18,7 @@ import {
   ChevronRight,
   Calendar,
   Award,
-  Stethoscope
+  Stethoscope,
 } from "lucide-react";
 
 const playfair = Playfair_Display({ subsets: ["latin"], weight: ["700"] });
@@ -110,7 +110,12 @@ function AnimatedStat({ to, isInView }) {
   const numberMatch = String(to).match(/^[0-9]+/);
   const suffix = numberMatch ? String(to).substring(numberMatch[0].length) : to;
 
-  return <span>{numberMatch ? value : ''}{suffix}</span>;
+  return (
+    <span>
+      {numberMatch ? value : ""}
+      {suffix}
+    </span>
+  );
 }
 
 export default function HomePage() {
@@ -122,9 +127,18 @@ export default function HomePage() {
   const testimonialsControls = useAnimation();
 
   // Intersection observers
-  const [statsRef, statsInView] = useInView({ triggerOnce: true, threshold: 0.1 });
-  const [servicesRef, servicesInView] = useInView({ triggerOnce: true, threshold: 0.5 });
-  const [testimonialsRef, testimonialsInView] = useInView({ triggerOnce: true, threshold: 0.5 });
+  const [statsRef, statsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  });
+  const [servicesRef, servicesInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
+  const [testimonialsRef, testimonialsInView] = useInView({
+    triggerOnce: true,
+    threshold: 0.5,
+  });
 
   useEffect(() => {
     if (statsInView) statsControls.start("visible");
@@ -189,10 +203,12 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
                 <div className="relative h-full flex flex-col justify-end p-12 md:p-20">
                   <div className="text-left text-white max-w-3xl">
-                    <h2 className={cn(
-                      "text-4xl md:text-5xl font-bold mb-4 tracking-tight",
-                      playfair.className
-                    )}>
+                    <h2
+                      className={cn(
+                        "text-4xl md:text-5xl font-bold mb-4 tracking-tight",
+                        playfair.className
+                      )}
+                    >
                       {slide.title}
                     </h2>
                     <p className="text-lg md:text-xl mb-4 text-blue-200 font-medium">
@@ -263,7 +279,11 @@ export default function HomePage() {
                   <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-6 mb-4 group-hover:bg-white/20 transition-all duration-300">
                     <IconComponent className="h-8 w-8 text-white mx-auto mb-3" />
                     <div className="text-3xl md:text-4xl font-bold text-white mb-2 h-10 flex items-center justify-center">
-                      {isCountable ? <AnimatedStat to={stat.number} isInView={statsInView} /> : stat.number}
+                      {isCountable ? (
+                        <AnimatedStat to={stat.number} isInView={statsInView} />
+                      ) : (
+                        stat.number
+                      )}
                     </div>
                     <div className="text-blue-100 text-sm font-medium">
                       {stat.label}
@@ -288,7 +308,7 @@ export default function HomePage() {
             variants={containerVariants}
           >
             <motion.div variants={itemVariants} className="text-center mb-16">
-              <h2 className="text-4xl font-light text-gray-900 mb-6">
+              <h2 className="text-4xl  text-gray-900 mb-6 font-bold">
                 Nos Services d'Excellence
               </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">

@@ -33,13 +33,13 @@ export default function Navigation({ currentPage }: NavigationProps) {
   return (
     <header className="bg-white/95 backdrop-blur-sm border-b border-blue-100/60 sticky top-0 z-50 shadow-sm shadow-blue-100/40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center py-3">
           {/* Logo */}
           <div 
             className="flex items-center space-x-4 cursor-pointer group" 
             onClick={() => handleNavigation("/")}
           >
-            <div className="w-24 h-24 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+            <div className="w-16 h-16 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
               <img 
                 src="/HPHD.jpg" 
                 alt="EPHD-B Logo" 
