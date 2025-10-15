@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface NavigationProps {
   currentPage?: string;
@@ -88,28 +89,38 @@ export default function Navigation({ currentPage }: NavigationProps) {
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden border-t border-gray-100 dark:border-slate-800 py-4 space-y-2">
-            {navigationItems.map((item) => (
-              <Button
-                key={item.name}
-                variant="ghost"
-                onClick={() => handleNavigation(item.href)}
-                className={`w-full text-left justify-start text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/80 dark:hover:bg-slate-800/80 rounded-xl transition-all duration-200 ${
-                  router.pathname === item.href ? "bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-blue-400" : ""
-                }`}
-              >
-                {item.name}
-              </Button>
-            ))}
-            <Button 
-              onClick={handleEmergencyWhatsApp}
-              className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-xl shadow-md mt-4"
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3, ease: "easeOut" }}
+              className="lg:hidden border-t border-gray-100 dark:border-slate-800 overflow-hidden"
             >
-              🚨 Urgences (WhatsApp)
-            </Button>
-          </div>
-        )}
+              <div className="py-4 space-y-2">
+                {navigationItems.map((item) => (
+                  <Button
+                    key={item.name}
+                    variant="ghost"
+                    onClick={() => handleNavigation(item.href)}
+                    className={`w-full text-left justify-start text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50/80 dark:hover:bg-slate-800/80 rounded-xl transition-all duration-200 ${
+                      router.pathname === item.href ? "bg-blue-50 dark:bg-slate-800 text-blue-600 dark:text-blue-400" : ""
+                    }`}
+                  >
+                    {item.name}
+                  </Button>
+                ))}
+                <Button 
+                  onClick={handleEmergencyWhatsApp}
+                  className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-xl shadow-md mt-4"
+                >
+                  🚨 Urgences (WhatsApp)
+                </Button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

@@ -185,7 +185,12 @@ export default function HomePage() {
   return (
     <Layout currentPage="accueil">
       {/* Hero Carousel Section */}
-      <section className="relative h-[90vh] overflow-hidden">
+      <motion.section 
+        className="relative h-[90vh] overflow-hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="relative h-full">
           {carouselSlides.map((slide, index) => (
             <div
@@ -203,20 +208,36 @@ export default function HomePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-transparent"></div>
                 <div className="relative h-full flex flex-col justify-end p-12 md:p-20">
                   <div className="text-left text-white max-w-3xl">
-                    <h2
+                    <motion.h2
+                      key={index} // Add key to re-trigger animation
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.7, ease: "easeOut" }}
                       className={cn(
                         "text-4xl md:text-5xl font-bold mb-4 tracking-tight",
                         playfair.className
                       )}
                     >
                       {slide.title}
-                    </h2>
-                    <p className="text-lg md:text-xl mb-4 text-blue-200 font-medium">
+                    </motion.h2>
+                    <motion.p 
+                      key={index + "sub"} // Add key to re-trigger animation
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.7, delay: 0.1, ease: "easeOut" }}
+                      className="text-lg md:text-xl mb-4 text-blue-200 font-medium"
+                    >
                       {slide.subtitle}
-                    </p>
-                    <p className="text-base text-gray-300 max-w-2xl leading-relaxed hidden md:block">
+                    </motion.p>
+                    <motion.p 
+                      key={index + "desc"} // Add key to re-trigger animation
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+                      className="text-base text-gray-300 max-w-2xl leading-relaxed hidden md:block"
+                    >
                       {slide.description}
-                    </p>
+                    </motion.p>
                   </div>
                 </div>
               </div>
@@ -252,7 +273,7 @@ export default function HomePage() {
             />
           ))}
         </div>
-      </section>
+      </motion.section>
 
       {/* Stats Section */}
       <section
