@@ -1,3 +1,160 @@
+import Layout from "@/components/Layout";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { motion } from "framer-motion";
+import { AnimatedSection } from "@/components/AnimatedSection";
+import { 
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
+  Zap,
+  Building2,
+  Users,
+  FileText,
+  Send,
+  CheckCircle,
+  Stethoscope,
+  X,
+  Menu,
+  Loader2
+} from "lucide-react";
+import { useState } from "react";
+import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
+
+const contactInfo = [
+  {
+    icon: MapPin,
+    title: "Adresse",
+    details: [
+      "Quartier Blanchon",
+      "Bingerville",
+      "District Autonome d'Abidjan",
+      "Côte d'Ivoire",
+    ],
+    color: "text-blue-600 dark:text-blue-400",
+  },
+  {
+    icon: Phone,
+    title: "Téléphones",
+    details: ["Standard: +225 05 54 08 92 32"],
+    color: "text-emerald-600 dark:text-emerald-400",
+  },
+  {
+    icon: Mail,
+    title: "Adresses Email",
+    details: ["hgbingerville@yahoo.com"],
+    color: "text-blue-600 dark:text-blue-400",
+  },
+  {
+    icon: Clock,
+    title: "Horaires d'ouverture",
+    details: [
+      "Lun-Ven: 7h00 - 18h00",
+      "Samedi: 8h00 - 16h00",
+      "Dimanche: Urgences uniquement",
+      "Urgences: 24h/24, 7j/7",
+    ],
+    color: "text-emerald-600 dark:text-emerald-400",
+  },
+];
+
+const services = [
+  {
+    icon: Stethoscope,
+    name: "Consultation Générale",
+    description: "Prise de rendez-vous pour consultation",
+  },
+  {
+    icon: Zap,
+    name: "Urgences Médicales",
+    description: "Information ou signalement d'urgence",
+  },
+  {
+    icon: Users,
+    name: "Recrutement",
+    description: "Candidature spontanée ou réponse à annonce",
+  },
+  {
+    icon: FileText,
+    name: "Informations",
+    description: "Demande de renseignements généraux",
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
+};
+
+export default function ContactPage() {
+  const { toast } = useToast();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    subject: "",
+    message: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        toast({ 
+          title: "Message envoyé !", 
+          description: "Merci, nous vous répondrons dans les plus brefs délais.",
+        });
+        setFormData({ name: "", email: "", phone: "", service: "", subject: "", message: "" });
+        setTimeout(() => setIsSubmitted(false), 5000); // Reset form view after 5s
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({ 
+        title: "Erreur", 
+        description: "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const handleChange = (
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
+  ) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleEmergencyWhatsApp = () => {
     const phoneNumber = "2250554089232";
@@ -376,4 +533,3 @@
     </Layout>
   );
 }
-
