@@ -1,21 +1,4 @@
 
-import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { 
-  Heart, 
-  Stethoscope,
-  Users,
-  Building2,
-  Activity,
-  Baby,
-  Microscope,
-  Zap,
-  Clock,
-  Shield,
-  UserCheck,
-  Calendar
-} from "lucide-react";
 
 const services = [
   {
@@ -129,6 +112,31 @@ const stats = [
 ];
 
 export default function ServicesPage() {
+  const [statsRef, statsInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [principauxRef, principauxInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [specialitesRef, specialitesInView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const [infoRef, infoInView] = useInView({ triggerOnce: true, threshold: 0.2 });
+
+  const statsControls = useAnimation();
+  const principauxControls = useAnimation();
+  const specialitesControls = useAnimation();
+  const infoControls = useAnimation();
+
+  useEffect(() => { if (statsInView) statsControls.start("visible"); }, [statsControls, statsInView]);
+  useEffect(() => { if (principauxInView) principauxControls.start("visible"); }, [principauxControls, principauxInView]);
+  useEffect(() => { if (specialitesInView) specialitesControls.start("visible"); }, [specialitesControls, specialitesInView]);
+  useEffect(() => { if (infoInView) infoControls.start("visible"); }, [infoControls, infoInView]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.15 } },
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1, transition: { duration: 0.5 } },
+  };
+
   return (
     <Layout currentPage="services">
       {/* Hero Section */}
@@ -148,14 +156,21 @@ export default function ServicesPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-white">
+      <motion.section 
+        ref={statsRef} 
+        animate={statsControls} 
+        initial="hidden" 
+        variants={containerVariants}
+        className="py-16 bg-white"
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => {
               const IconComponent = stat.icon;
               return (
-                <div 
+                <motion.div 
                   key={index} 
+                  variants={itemVariants}
                   className="text-center group hover:transform hover:-translate-y-2 transition-all duration-300"
                 >
                   <div className="bg-gradient-to-br from-blue-50 to-emerald-50 rounded-2xl p-6 mb-4 group-hover:shadow-lg transition-all duration-300">
@@ -167,79 +182,90 @@ export default function ServicesPage() {
                       {stat.label}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               );
             })}
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Services Principaux */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50">
+      <section ref={principauxRef} className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-light text-gray-900 mb-6">Services Principaux</h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <motion.div 
+            variants={containerVariants} 
+            initial="hidden"
+            animate={principauxControls}
+            className="text-center mb-16"
+          >
+            <motion.h2 variants={itemVariants} className="text-4xl font-light text-gray-900 mb-6">Services Principaux</motion.h2>
+            <motion.p variants={itemVariants} className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
               Nos départements spécialisés offrent des soins de qualité 
               avec une approche personnalisée pour chaque patient.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <motion.div 
+            className="grid lg:grid-cols-2 gap-8"
+            variants={containerVariants}
+            initial="hidden"
+            animate={principauxControls}
+          >
             {services.map((service, index) => {
               const IconComponent = service.icon;
               return (
-                <Card 
-                  key={index}
-                  className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden bg-white"
-                >
-                  <CardHeader className="pb-4">
-                    <div className="flex items-center space-x-4">
-                      <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg ${
-                        service.emergency 
-                          ? "bg-gradient-to-br from-red-500 to-orange-500" 
-                          : "bg-gradient-to-br from-blue-500 to-emerald-500"
-                      }`}>
-                        <IconComponent className="h-8 w-8 text-white" />
-                      </div>
-                      <div className="flex-1">
-                        <CardTitle className="text-2xl font-semibold text-gray-900 mb-2">
-                          {service.title}
-                        </CardTitle>
-                        <div className="flex items-center space-x-4">
-                          <div className="flex items-center text-sm text-gray-600">
-                            <Clock className="h-4 w-4 mr-1" />
-                            {service.hours}
-                          </div>
-                          {service.emergency && (
-                            <div className="bg-red-100 text-red-600 px-2 py-1 rounded-lg text-xs font-medium">
-                              URGENCES
+                <motion.div variants={itemVariants} key={index}>
+                  <Card 
+                    className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden bg-white h-full"
+                  >
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center space-x-4">
+                        <div className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg ${
+                          service.emergency 
+                            ? "bg-gradient-to-br from-red-500 to-orange-500" 
+                            : "bg-gradient-to-br from-blue-500 to-emerald-500"
+                        }`}>
+                          <IconComponent className="h-8 w-8 text-white" />
+                        </div>
+                        <div className="flex-1">
+                          <CardTitle className="text-2xl font-semibold text-gray-900 mb-2">
+                            {service.title}
+                          </CardTitle>
+                          <div className="flex items-center space-x-4">
+                            <div className="flex items-center text-sm text-gray-600">
+                              <Clock className="h-4 w-4 mr-1" />
+                              {service.hours}
                             </div>
-                          )}
+                            {service.emergency && (
+                              <div className="bg-red-100 text-red-600 px-2 py-1 rounded-lg text-xs font-medium">
+                                URGENCES
+                              </div>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent className="pt-0">
-                    <p className="text-gray-600 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-                    <div className="space-y-3">
-                      <h4 className="font-semibold text-gray-900">Services inclus :</h4>
-                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                        {service.features.map((feature, idx) => (
-                          <li key={idx} className="flex items-center text-sm text-gray-600">
-                            <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </CardContent>
-                </Card>
+                    </CardHeader>
+                    <CardContent className="pt-0">
+                      <p className="text-gray-600 leading-relaxed mb-6">
+                        {service.description}
+                      </p>
+                      <div className="space-y-3">
+                        <h4 className="font-semibold text-gray-900">Services inclus :</h4>
+                        <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                          {service.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-center text-sm text-gray-600">
+                              <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
               );
             })}
-          </div>
+          </motion.div>
         </div>
       </section>
 

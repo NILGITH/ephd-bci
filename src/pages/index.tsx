@@ -133,7 +133,7 @@ export default function HomePage() {
   });
   const [servicesRef, servicesInView] = useInView({
     triggerOnce: true,
-    threshold: 0.5,
+    threshold: 0.1,
   });
   const [testimonialsRef, testimonialsInView] = useInView({
     triggerOnce: true,
@@ -318,10 +318,7 @@ export default function HomePage() {
               </p>
             </motion.div>
 
-            <motion.div
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-8"
-              variants={containerVariants}
-            >
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
               {services.map((service, index) => {
                 const IconComponent = service.icon;
                 return (
@@ -342,7 +339,7 @@ export default function HomePage() {
                   </motion.div>
                 );
               })}
-            </motion.div>
+            </div>
           </motion.div>
         </div>
       </section>
