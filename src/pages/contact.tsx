@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import {
+import { 
   Phone,
   Mail,
   MapPin,
@@ -20,9 +20,11 @@ import {
   Stethoscope,
   X,
   Menu,
+  Loader2
 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
+import { useToast } from "@/hooks/use-toast";
 
 const contactInfo = [
   {
@@ -95,6 +97,7 @@ const itemVariants = {
 };
 
 export default function ContactPage() {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -103,14 +106,42 @@ export default function ContactPage() {
     subject: "",
     message: "",
   });
-
+  const [isLoading, setIsLoading] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulation d'envoi du formulaire
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+        toast({ 
+          title: "Message envoyé !", 
+          description: "Merci, nous vous répondrons dans les plus brefs délais.",
+        });
+        setFormData({ name: "", email: "", phone: "", service: "", subject: "", message: "" });
+        setTimeout(() => setIsSubmitted(false), 5000); // Reset form view after 5s
+      } else {
+        throw new Error('Failed to send message');
+      }
+    } catch (error) {
+      toast({ 
+        title: "Erreur", 
+        description: "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleChange = (
@@ -261,6 +292,7 @@ export default function ContactPage() {
                               onChange={handleChange}
                               className="mt-1"
                               required
+                              disabled={isLoading}
                             />
                           </div>
                           <div>
@@ -273,6 +305,7 @@ export default function ContactPage() {
                               onChange={handleChange}
                               className="mt-1"
                               required
+                              disabled={isLoading}
                             />
                           </div>
                         </div>
@@ -286,6 +319,7 @@ export default function ContactPage() {
                               value={formData.phone}
                               onChange={handleChange}
                               className="mt-1"
+                              disabled={isLoading}
                             />
                           </div>
                           <div>
@@ -296,6 +330,7 @@ export default function ContactPage() {
                               value={formData.service}
                               onChange={handleChange}
                               className="mt-1 w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                              disabled={isLoading}
                             >
                               <option value="">Sélectionner un service</option>
                               <option value="consultation">Consultation</option>
@@ -318,6 +353,7 @@ export default function ContactPage() {
                             onChange={handleChange}
                             className="mt-1"
                             required
+                            disabled={isLoading}
                           />
                         </div>
 
@@ -331,15 +367,23 @@ export default function ContactPage() {
                             rows={5}
                             className="mt-1"
                             required
+                            disabled={isLoading}
                           />
                         </div>
 
                         <Button
                           type="submit"
-                          className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
+                          className="w-full bg-gradient-to-r from-blue-600 to-emerald-600 hover:from-blue-700 hover:to-emerald-700 text-white py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200 flex items-center justify-center"
+                          disabled={isLoading}
                         >
-                          <Send className="h-4 w-4 mr-2" />
-                          Envoyer le message
+                          {isLoading ? (
+                            <Loader2 className="h-5 w-5 animate-spin" />
+                          ) : (
+                            <>
+                              <Send className="h-4 w-4 mr-2" />
+                              Envoyer le message
+                            </>
+                          )}
                         </Button>
                       </form>
                     )}
