@@ -27,7 +27,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-white border-t border-gray-300">
+    <footer className="bg-white dark:bg-slate-900 border-t border-gray-200 dark:border-slate-800">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Footer Content */}
         <div className="py-16 flex flex-col lg:flex-row gap-12 text-center md:text-left">
@@ -42,31 +42,31 @@ export default function Footer() {
                 />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900">EPHD-B</h3>
-                <p className="text-sm text-blue-600 font-medium">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">EPHD-B</h3>
+                <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">
                   Établissement Public Hospitalier
                 </p>
-                <p className="text-sm text-emerald-600 font-medium">
+                <p className="text-sm text-emerald-600 dark:text-emerald-400 font-medium">
                   Départemental de Bingerville
                 </p>
               </div>
             </div>
-            <p className="text-gray-600 mb-6 leading-relaxed">
+            <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
               L'Établissement Public Hospitalier Départemental de Bingerville
               est un établissement de référence qui offre des soins de qualité
               depuis plus de 70 ans. Situé dans le quartier Blanchon, nous
               servons la communauté avec excellence et compassion.
             </p>
             <div className="space-y-3 flex flex-col items-center md:items-start">
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-gray-600 dark:text-gray-400">
                 <MapPin className="h-4 w-4 mr-3 text-blue-500 flex-shrink-0" />
                 <span>Quartier Blanchon, Bingerville, Côte d'Ivoire</span>
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-gray-600 dark:text-gray-400">
                 <Phone className="h-4 w-4 mr-3 text-emerald-500 flex-shrink-0" />
                 <span>+225 05 54 08 92 32</span>
               </div>
-              <div className="flex items-center text-gray-600">
+              <div className="flex items-center text-gray-600 dark:text-gray-400">
                 <Mail className="h-4 w-4 mr-3 text-blue-500 flex-shrink-0" />
                 <span>hgbingerville@yahoo.com</span>
               </div>
@@ -77,7 +77,7 @@ export default function Footer() {
           <div className="lg:w-1/2 flex flex-col sm:flex-row gap-8">
             {/* Quick Links */}
             <div className="w-full sm:w-1/2">
-              <h4 className="text-lg font-semibold text-gray-900 mb-6">
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-6">
                 Liens Rapides
               </h4>
               <ul className="space-y-3 flex flex-col items-center md:items-start">
@@ -85,7 +85,7 @@ export default function Footer() {
                   <li key={link.name}>
                     <Button
                       variant="ghost"
-                      className="h-auto p-0 text-gray-600 hover:text-blue-600 font-normal justify-start"
+                      className="h-auto p-0 text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 font-normal justify-start"
                     >
                       {link.name}
                     </Button>
@@ -96,14 +96,14 @@ export default function Footer() {
 
             {/* Services */}
             <div className="w-full sm:w-1/2">
-              <h4 className="text-lg font-semibold text-gray-900 mb-6">
+              <h4 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-6">
                 Nos Services
               </h4>
               <ul className="space-y-3">
                 {services.map((service) => (
                   <li
                     key={service}
-                    className="text-gray-600 flex items-center justify-center md:justify-start"
+                    className="text-gray-600 dark:text-gray-400 flex items-center justify-center md:justify-start"
                   >
                     <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-3 flex-shrink-0"></div>
                     <span>{service}</span>
@@ -115,13 +115,13 @@ export default function Footer() {
         </div>
 
         {/* Emergency Banner */}
-        <div className="py-6 border-t border-gray-100 bg-gradient-to-r from-red-50 to-orange-50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
+        <div className="py-6 border-t border-gray-100 dark:border-slate-800 bg-gradient-to-r from-red-50 to-orange-50 dark:from-red-900/50 dark:to-orange-900/50 -mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-4 md:mb-0">
-              <h4 className="text-lg font-semibold text-red-800 mb-1">
+              <h4 className="text-lg font-semibold text-red-800 dark:text-red-300 mb-1">
                 🚨 Urgences Médicales
               </h4>
-              <p className="text-red-600">
+              <p className="text-red-600 dark:text-red-400">
                 Service d'urgences disponible 24h/24, 7j/7
               </p>
             </div>
@@ -150,9 +150,9 @@ export default function Footer() {
         </div>
 
         {/* Bottom Footer */}
-        <div className="py-8 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center">
+        <div className="py-8 border-t border-gray-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center">
           {/* <div className="flex items-center justify-center space-x-6 mb-4 md:mb-0"> */}
-          <p className="text-gray-500 text-sm text-center w-full">
+          <p className="text-gray-500 dark:text-gray-500 text-sm text-center w-full">
             © 2025 EPHD-B. Tous droits réservés.
           </p>
           {/* <div className="flex items-center space-x-4 text-sm text-gray-500">

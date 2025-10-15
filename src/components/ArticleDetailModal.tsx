@@ -56,7 +56,7 @@ export default function ArticleDetailModal({
           </div>
         </div>
         <div className="p-8">
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 mb-6">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
             <div className="flex items-center">
               <Calendar className="h-4 w-4 mr-2" />
               <span>{article.date}</span>
@@ -67,28 +67,12 @@ export default function ArticleDetailModal({
             </div>
             <div className="flex items-center">
               <Tag className="h-4 w-4 mr-2" />
-              <Badge
-                className={`${
-                  article.category === "Formation"
-                    ? "bg-emerald-100 text-emerald-800"
-                    : article.category === "Action Sociale"
-                    ? "bg-orange-100 text-orange-800"
-                    : article.category === "Équipement"
-                    ? "bg-purple-100 text-purple-800"
-                    : article.category === "Santé Publique"
-                    ? "bg-red-100 text-red-800"
-                    : article.category === "Partenariat"
-                    ? "bg-indigo-100 text-indigo-800"
-                    : "bg-gray-100 text-gray-800"
-                }`}
-              >
-                {article.category}
-              </Badge>
+              <Badge variant="secondary">{article.category}</Badge>
             </div>
           </div>
 
           <div
-            className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
+            className="prose prose-lg dark:prose-invert max-w-none text-gray-700 dark:text-gray-300 leading-relaxed"
             dangerouslySetInnerHTML={{
               __html: article.content.replace(/\n/g, "<br />"),
             }}

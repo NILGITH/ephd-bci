@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -157,7 +158,7 @@ export default function PartenariatsPage() {
 
       {/* Stats Section */}
       <AnimatedSection>
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-white dark:bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="grid grid-cols-2 md:grid-cols-4 gap-8"
@@ -173,12 +174,12 @@ export default function PartenariatsPage() {
                     variants={itemVariants}
                     className="text-center group hover:transform hover:-translate-y-2 transition-all duration-300"
                   >
-                    <div className="bg-gradient-to-br from-blue-50 to-emerald-50 rounded-2xl p-6 mb-4 group-hover:shadow-lg transition-all duration-300">
-                      <IconComponent className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-                      <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    <div className="bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-6 mb-4 group-hover:shadow-lg transition-all duration-300">
+                      <IconComponent className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
+                      <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                         {stat.number}
                       </div>
-                      <div className="text-gray-600 text-sm font-medium">
+                      <div className="text-gray-600 dark:text-gray-400 text-sm font-medium">
                         {stat.label}
                       </div>
                     </div>
@@ -192,7 +193,7 @@ export default function PartenariatsPage() {
 
       {/* Partenariats Stratégiques */}
       <AnimatedSection>
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50">
+        <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50 dark:from-slate-900 dark:to-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-16"
@@ -201,12 +202,12 @@ export default function PartenariatsPage() {
               transition={{ duration: 0.7 }}
             >
               <div className="flex items-center justify-center mb-6">
-                <Handshake className="h-8 w-8 text-blue-600 mr-4" />
-                <h2 className="text-4xl font-bold text-gray-900">
+                <Handshake className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-4" />
+                <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
                   Nos Partenariats
                 </h2>
               </div>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 Des collaborations stratégiques qui renforcent notre capacité à
                 offrir des soins de qualité et à servir notre communauté.
               </p>
@@ -220,7 +221,7 @@ export default function PartenariatsPage() {
             >
               {partnerships.map((partnership, index) => (
                 <motion.div variants={itemVariants} key={index}>
-                  <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden bg-white">
+                  <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden bg-white dark:bg-slate-800">
                     <div className="relative overflow-hidden">
                       <img
                         src={partnership.image}
@@ -233,7 +234,7 @@ export default function PartenariatsPage() {
                         </Badge>
                       </div>
                       <div className="absolute top-4 right-4">
-                        <Badge className="bg-white/90 text-gray-800">
+                        <Badge className="bg-white/90 text-gray-800 dark:bg-slate-700/90 dark:text-gray-200">
                           Depuis {partnership.since}
                         </Badge>
                       </div>
@@ -241,28 +242,28 @@ export default function PartenariatsPage() {
                     <CardHeader>
                       <div className="flex items-start justify-between">
                         <div className="flex-1">
-                          <CardTitle className="text-xl font-bold text-gray-900 mb-2">
+                          <CardTitle className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                             {partnership.name}
                           </CardTitle>
-                          <Badge className="bg-blue-100 text-blue-800 mb-4">
+                          <Badge className="bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300 mb-4">
                             {partnership.type}
                           </Badge>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent className="pt-0">
-                      <p className="text-gray-600 leading-relaxed mb-6">
+                      <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                         {partnership.description}
                       </p>
                       <div className="space-y-3">
-                        <h4 className="font-semibold text-gray-900">
+                        <h4 className="font-semibold text-gray-900 dark:text-gray-100">
                           Activités communes :
                         </h4>
                         <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                           {partnership.activities.map((activity, idx) => (
                             <li
                               key={idx}
-                              className="flex items-center text-sm text-gray-600"
+                              className="flex items-center text-sm text-gray-600 dark:text-gray-400"
                             >
                               <CheckCircle className="w-4 h-4 text-emerald-500 mr-2 flex-shrink-0" />
                               {activity}
@@ -281,7 +282,7 @@ export default function PartenariatsPage() {
 
       {/* Engagement Communautaire */}
       <AnimatedSection>
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white dark:bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-16"
@@ -290,12 +291,12 @@ export default function PartenariatsPage() {
               transition={{ duration: 0.7 }}
             >
               <div className="flex items-center justify-center mb-6">
-                <UserCheck className="h-8 w-8 text-blue-600 mr-4" />
-                <h2 className="text-4xl font-bold text-gray-900">
+                <UserCheck className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-4" />
+                <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
                   Engagement Communautaire
                 </h2>
               </div>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 Au cœur de notre mission : servir et soutenir activement notre
                 communauté à travers des actions concrètes et impactantes.
               </p>
@@ -311,18 +312,18 @@ export default function PartenariatsPage() {
                 const IconComponent = action.icon;
                 return (
                   <motion.div variants={itemVariants} key={index}>
-                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl group bg-gradient-to-br from-white to-gray-50/30">
+                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl group bg-gradient-to-br from-white to-gray-50/30 dark:from-slate-800 dark:to-slate-800/50">
                       <CardContent className="p-8 text-center">
                         <div className="bg-gradient-to-br from-blue-500 to-emerald-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                           <IconComponent className="h-8 w-8 text-white" />
                         </div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
                           {action.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed mb-4">
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-4">
                           {action.description}
                         </p>
-                        <div className="bg-emerald-50 text-emerald-700 px-3 py-2 rounded-lg text-sm font-medium">
+                        <div className="bg-emerald-50 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-300 px-3 py-2 rounded-lg text-sm font-medium">
                           {action.impact}
                         </div>
                       </CardContent>
@@ -380,3 +381,4 @@ export default function PartenariatsPage() {
     </Layout>
   );
 }
+

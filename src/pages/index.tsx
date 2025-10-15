@@ -299,7 +299,7 @@ export default function HomePage() {
       {/* Services Section */}
       <section
         ref={servicesRef}
-        className="py-20 bg-gradient-to-br from-white to-gray-50"
+        className="py-20 bg-gradient-to-br from-white to-gray-50 dark:from-slate-900 dark:to-slate-800"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -308,10 +308,10 @@ export default function HomePage() {
             variants={containerVariants}
           >
             <motion.div variants={itemVariants} className="text-center mb-16">
-              <h2 className="text-4xl  text-gray-900 mb-6 font-bold">
+              <h2 className="text-4xl text-gray-900 dark:text-gray-100 mb-6 font-bold">
                 Nos Services d'Excellence
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 L'EPHD de Bingerville offre une gamme complète de services
                 médicaux avec une approche centrée sur le patient et des
                 standards de qualité élevés.
@@ -323,15 +323,15 @@ export default function HomePage() {
                 const IconComponent = service.icon;
                 return (
                   <motion.div key={index} variants={itemVariants}>
-                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/30 rounded-2xl overflow-hidden group h-full">
+                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 bg-gradient-to-br from-white to-blue-50/30 dark:from-slate-800 dark:to-blue-900/20 rounded-2xl overflow-hidden group h-full">
                       <CardContent className="p-8 text-center">
                         <div className="bg-gradient-to-br from-blue-500 to-emerald-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                           <IconComponent className="h-8 w-8 text-white" />
                         </div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
                           {service.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                           {service.description}
                         </p>
                       </CardContent>

@@ -1,3 +1,4 @@
+
 import Layout from "@/components/Layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -116,7 +117,7 @@ export default function AboutPage() {
       </motion.section>
 
       {/* Histoire Section */}
-      <AnimatedSection className="py-20 bg-white">
+      <AnimatedSection className="py-20 bg-white dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
@@ -127,11 +128,11 @@ export default function AboutPage() {
             <motion.div variants={itemVariants}>
               <div className="flex items-center mb-8">
                 <History className="h-8 w-8 text-blue-600 mr-4" />
-                <h2 className="text-4xl font-bold text-gray-900">
+                <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
                   Notre Histoire
                 </h2>
               </div>
-              <div className="space-y-6 text-gray-600 leading-relaxed">
+              <div className="space-y-6 text-gray-600 dark:text-gray-400 leading-relaxed">
                 <p className="text-lg">
                   Fondé en 1954, l'EPHD de Bingerville a été créé pour répondre
                   aux besoins sanitaires croissants de la région d'Abidjan.
@@ -153,17 +154,17 @@ export default function AboutPage() {
               </div>
             </motion.div>
             <motion.div variants={itemVariants} className="relative">
-              <div className="bg-gradient-to-br from-blue-100 to-emerald-100 rounded-3xl p-8">
+              <div className="bg-gradient-to-br from-blue-100 to-emerald-100 dark:from-blue-900/50 dark:to-emerald-900/50 rounded-3xl p-8">
                 <img
                   src="/images/bingervillehospital.jpg"
                   alt="Façade EPHD Bingerville"
                   className="w-full rounded-2xl shadow-xl"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-2xl p-6 shadow-xl">
+              <div className="absolute -bottom-6 -right-6 bg-white dark:bg-slate-800 rounded-2xl p-6 shadow-xl">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-blue-600">70+</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="text-3xl font-bold text-blue-600 dark:text-blue-400">70+</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">
                     Années d'excellence
                   </div>
                 </div>
@@ -174,7 +175,7 @@ export default function AboutPage() {
       </AnimatedSection>
 
       {/* Mission & Vision */}
-      <AnimatedSection className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50">
+      <AnimatedSection className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50 dark:from-slate-900 dark:to-slate-800/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
@@ -215,7 +216,7 @@ export default function AboutPage() {
       </AnimatedSection>
 
       {/* Nos Valeurs */}
-      <AnimatedSection className="py-20 bg-white">
+      <AnimatedSection className="py-20 bg-white dark:bg-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
@@ -223,10 +224,10 @@ export default function AboutPage() {
             animate="visible"
           >
             <motion.div variants={itemVariants} className="text-center mb-16">
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Nos Valeurs
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 Les principes fondamentaux qui guident chacune de nos actions et
                 définissent notre engagement envers nos patients et notre
                 communauté.
@@ -241,15 +242,15 @@ export default function AboutPage() {
                 const IconComponent = value.icon;
                 return (
                   <motion.div variants={itemVariants} key={index}>
-                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl group bg-gradient-to-br from-white to-gray-50/50 h-full">
+                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl group bg-gradient-to-br from-white to-gray-50/50 dark:from-slate-800 dark:to-slate-800/50 h-full">
                       <CardContent className="p-8 text-center">
                         <div className="bg-gradient-to-br from-blue-500 to-emerald-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                           <IconComponent className="h-8 w-8 text-white" />
                         </div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
                           {value.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                           {value.description}
                         </p>
                       </CardContent>
@@ -263,7 +264,7 @@ export default function AboutPage() {
       </AnimatedSection>
 
       {/* Équipe dirigeante */}
-      <AnimatedSection className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50">
+      <AnimatedSection className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50 dark:from-slate-900 dark:to-slate-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             variants={containerVariants}
@@ -273,11 +274,11 @@ export default function AboutPage() {
             <motion.div variants={itemVariants} className="text-center mb-16">
               <div className="flex items-center justify-center mb-6">
                 <UserCheck className="h-8 w-8 text-blue-600 mr-4" />
-                <h2 className="text-4xl font-bold text-gray-900">
+                <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100">
                   Équipe Dirigeante
                 </h2>
               </div>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 Une équipe de professionnels expérimentés et dévoués, unis par
                 la passion d'offrir des soins d'excellence.
               </p>
@@ -291,7 +292,7 @@ export default function AboutPage() {
                 <motion.div variants={itemVariants} key={index}>
                   <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-500 rounded-2xl overflow-hidden group bg-transparent relative h-96 [perspective:1000px]">
                     <div className="relative w-full h-full transition-transform duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-                      <div className="absolute w-full h-full [backface-visibility:hidden] bg-white rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+                      <div className="absolute w-full h-full [backface-visibility:hidden] bg-white dark:bg-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center text-center">
                         <div className="aspect-square w-full overflow-hidden mb-4">
                           <img
                             src={leader.image}
@@ -299,18 +300,18 @@ export default function AboutPage() {
                             className="w-full h-full object-cover transition-transform duration-300"
                           />
                         </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-2">
+                        <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                           {leader.name}
                         </h3>
-                        <p className="text-blue-600 font-semibold mb-3">
+                        <p className="text-blue-600 dark:text-blue-400 font-semibold mb-3">
                           {leader.position}
                         </p>
                       </div>
-                      <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white rounded-2xl p-6 flex flex-col items-center justify-center text-center">
-                        <h4 className="text-lg font-bold text-gray-900 mb-2">
+                      <div className="absolute w-full h-full [backface-visibility:hidden] [transform:rotateY(180deg)] bg-white dark:bg-slate-800 rounded-2xl p-6 flex flex-col items-center justify-center text-center">
+                        <h4 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-2">
                           Description
                         </h4>
-                        <p className="text-gray-600 text-sm leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                           {leader.description}
                         </p>
                       </div>
@@ -361,3 +362,4 @@ export default function AboutPage() {
     </Layout>
   );
 }
+

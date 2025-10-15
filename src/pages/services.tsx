@@ -1,3 +1,4 @@
+
 import Layout from "../components/Layout";
 import { Button } from "../components/ui/button";
 import {
@@ -187,7 +188,7 @@ export default function ServicesPage() {
 
       {/* Stats Section */}
       <AnimatedSection>
-        <section className="py-16 bg-white">
+        <section className="py-16 bg-white dark:bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="grid grid-cols-2 md:grid-cols-4 gap-8"
@@ -203,12 +204,12 @@ export default function ServicesPage() {
                     variants={itemVariants}
                     className="text-center group hover:transform hover:-translate-y-2 transition-all duration-300"
                   >
-                    <div className="bg-gradient-to-br from-blue-50 to-emerald-50 rounded-2xl p-6 mb-4 group-hover:shadow-lg transition-all duration-300">
-                      <IconComponent className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-                      <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">
+                    <div className="bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl p-6 mb-4 group-hover:shadow-lg transition-all duration-300">
+                      <IconComponent className="h-8 w-8 text-blue-600 dark:text-blue-400 mx-auto mb-3" />
+                      <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-gray-100 mb-2">
                         {stat.number}
                       </div>
-                      <div className="text-gray-600 text-sm font-medium">
+                      <div className="text-gray-600 dark:text-gray-400 text-sm font-medium">
                         {stat.label}
                       </div>
                     </div>
@@ -222,7 +223,7 @@ export default function ServicesPage() {
 
       {/* Services Principaux */}
       <AnimatedSection>
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50">
+        <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50 dark:from-slate-900 dark:to-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-16"
@@ -230,10 +231,10 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Services Principaux
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 Nos départements spécialisés offrent des soins de qualité avec
                 une approche personnalisée pour chaque patient.
               </p>
@@ -249,7 +250,7 @@ export default function ServicesPage() {
                 const IconComponent = service.icon;
                 return (
                   <motion.div variants={itemVariants} key={index}>
-                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden bg-white h-full">
+                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden bg-white dark:bg-slate-800 h-full">
                       <CardHeader className="pb-4">
                         <div className="flex items-center space-x-4">
                           <div
@@ -262,11 +263,11 @@ export default function ServicesPage() {
                             <IconComponent className="h-8 w-8 text-white" />
                           </div>
                           <div className="flex-1">
-                            <CardTitle className="text-2xl font-semibold text-gray-900 mb-2">
+                            <CardTitle className="text-2xl font-semibold text-gray-900 dark:text-gray-100 mb-2">
                               {service.title}
                             </CardTitle>
                             <div className="flex items-center space-x-4">
-                              <div className="flex items-center text-sm text-gray-600">
+                              <div className="flex items-center text-sm text-gray-600 dark:text-gray-400">
                                 <Clock className="h-4 w-4 mr-1" />
                                 {service.hours}
                               </div>
@@ -280,18 +281,18 @@ export default function ServicesPage() {
                         </div>
                       </CardHeader>
                       <CardContent className="pt-0">
-                        <p className="text-gray-600 leading-relaxed mb-6">
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                           {service.description}
                         </p>
                         <div className="space-y-3">
-                          <h4 className="font-semibold text-gray-900">
+                          <h4 className="font-semibold text-gray-900 dark:text-gray-100">
                             Services inclus :
                           </h4>
                           <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                             {service.features.map((feature, idx) => (
                               <li
                                 key={idx}
-                                className="flex items-center text-sm text-gray-600"
+                                className="flex items-center text-sm text-gray-600 dark:text-gray-400"
                               >
                                 <div className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2"></div>
                                 {feature}
@@ -311,7 +312,7 @@ export default function ServicesPage() {
 
       {/* Spécialités Complémentaires */}
       <AnimatedSection>
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white dark:bg-slate-900">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="text-center mb-16"
@@ -319,10 +320,10 @@ export default function ServicesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-4xl font-bold text-gray-900 mb-6">
+              <h2 className="text-4xl font-bold text-gray-900 dark:text-gray-100 mb-6">
                 Spécialités Complémentaires
               </h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
                 Des services spécialisés pour répondre aux besoins spécifiques
                 de nos patients avec expertise et bienveillance.
               </p>
@@ -338,15 +339,15 @@ export default function ServicesPage() {
                 const IconComponent = specialty.icon;
                 return (
                   <motion.div variants={itemVariants} key={index}>
-                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl group bg-gradient-to-br from-white to-gray-50/30">
+                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl group bg-gradient-to-br from-white to-gray-50/30 dark:from-slate-800 dark:to-slate-800/50">
                       <CardContent className="p-8 text-center">
                         <div className="bg-gradient-to-br from-blue-500 to-emerald-500 w-16 h-16 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
                           <IconComponent className="h-8 w-8 text-white" />
                         </div>
-                        <h3 className="text-xl font-semibold text-gray-900 mb-4">
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-100 mb-4">
                           {specialty.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                           {specialty.description}
                         </p>
                       </CardContent>
@@ -426,3 +427,4 @@ export default function ServicesPage() {
     </Layout>
   );
 }
+

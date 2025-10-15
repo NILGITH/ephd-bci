@@ -111,44 +111,48 @@ const categories = [
   {
     name: "Tous",
     count: actualites.length,
-    color: "bg-gray-100 text-gray-800",
-    activeColor: "bg-blue-600 text-white",
+    color: "bg-gray-100 text-gray-800 dark:bg-slate-800 dark:text-gray-200",
+    activeColor: "bg-blue-600 text-white dark:bg-blue-500",
   },
   {
     name: "Événement Officiel",
     count: actualites.filter((a) => a.category === "Événement Officiel").length,
-    color: "bg-blue-100 text-blue-800",
-    activeColor: "bg-blue-600 text-white",
+    color: "bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300",
+    activeColor: "bg-blue-600 text-white dark:bg-blue-500",
   },
   {
     name: "Formation",
     count: actualites.filter((a) => a.category === "Formation").length,
-    color: "bg-emerald-100 text-emerald-800",
-    activeColor: "bg-emerald-600 text-white",
+    color:
+      "bg-emerald-100 text-emerald-800 dark:bg-emerald-900/50 dark:text-emerald-300",
+    activeColor: "bg-emerald-600 text-white dark:bg-emerald-500",
   },
   {
     name: "Action Sociale",
     count: actualites.filter((a) => a.category === "Action Sociale").length,
-    color: "bg-orange-100 text-orange-800",
-    activeColor: "bg-orange-600 text-white",
+    color:
+      "bg-orange-100 text-orange-800 dark:bg-orange-900/50 dark:text-orange-300",
+    activeColor: "bg-orange-600 text-white dark:bg-orange-500",
   },
   {
     name: "Équipement",
     count: actualites.filter((a) => a.category === "Équipement").length,
-    color: "bg-purple-100 text-purple-800",
-    activeColor: "bg-purple-600 text-white",
+    color:
+      "bg-purple-100 text-purple-800 dark:bg-purple-900/50 dark:text-purple-300",
+    activeColor: "bg-purple-600 text-white dark:bg-purple-500",
   },
   {
     name: "Santé Publique",
     count: actualites.filter((a) => a.category === "Santé Publique").length,
-    color: "bg-red-100 text-red-800",
-    activeColor: "bg-red-600 text-white",
+    color: "bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300",
+    activeColor: "bg-red-600 text-white dark:bg-red-500",
   },
   {
     name: "Partenariat",
     count: actualites.filter((a) => a.category === "Partenariat").length,
-    color: "bg-indigo-100 text-indigo-800",
-    activeColor: "bg-indigo-600 text-white",
+    color:
+      "bg-indigo-100 text-indigo-800 dark:bg-indigo-900/50 dark:text-indigo-300",
+    activeColor: "bg-indigo-600 text-white dark:bg-indigo-500",
   },
 ];
 
@@ -186,7 +190,7 @@ export default function ActualitesPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
             >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-wide">
+              <h1 className="text-5xl md:text-6xl font-light mb-6 tracking-wide">
                 Actualités
               </h1>
               <p className="text-xl md:text-2xl text-blue-100 max-w-4xl mx-auto leading-relaxed">
@@ -200,7 +204,7 @@ export default function ActualitesPage() {
 
       {/* Categories Filter */}
       <AnimatedSection>
-        <section className="py-8 bg-white border-b border-gray-100">
+        <section className="py-8 bg-white dark:bg-slate-900 border-b border-gray-100 dark:border-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="flex flex-wrap gap-3"
@@ -232,7 +236,7 @@ export default function ActualitesPage() {
       {/* Featured Articles */}
       {featuredArticles.length > 0 && (
         <AnimatedSection>
-          <section className="py-16 bg-white">
+          <section className="py-16 bg-white dark:bg-slate-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
               <motion.div
                 className="flex items-center mb-12"
@@ -240,8 +244,8 @@ export default function ActualitesPage() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.7 }}
               >
-                <Award className="h-8 w-8 text-blue-600 mr-4" />
-                <h2 className="text-3xl font-bold text-gray-900">
+                <Award className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-4" />
+                <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">
                   Articles à la Une
                 </h2>
               </motion.div>
@@ -256,7 +260,7 @@ export default function ActualitesPage() {
               >
                 {featuredArticles.map((article) => (
                   <motion.div key={article.id} variants={itemVariants}>
-                    <Card className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden group bg-white">
+                    <Card className="border-0 shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden group bg-white dark:bg-slate-800">
                       <div className="relative overflow-hidden">
                         <img
                           src={article.image}
@@ -269,23 +273,23 @@ export default function ActualitesPage() {
                           </Badge>
                         </div>
                         <div className="absolute top-4 right-4">
-                          <Badge className="bg-white/90 text-gray-800">
+                          <Badge className="bg-white/90 text-gray-800 dark:bg-slate-900/80 dark:text-gray-200">
                             {article.category}
                           </Badge>
                         </div>
                       </div>
                       <CardContent className="p-8">
-                        <div className="flex items-center text-sm text-gray-500 mb-4">
+                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-4">
                           <Calendar className="h-4 w-4 mr-2" />
                           {article.date}
                           <span className="mx-2">•</span>
                           <Users className="h-4 w-4 mr-2" />
                           {article.author}
                         </div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-blue-600 transition-colors duration-200">
+                        <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
                           {article.title}
                         </h3>
-                        <p className="text-gray-600 leading-relaxed mb-6">
+                        <p className="text-gray-600 dark:text-gray-400 leading-relaxed mb-6">
                           {article.excerpt}
                         </p>
                         <Button
@@ -307,7 +311,7 @@ export default function ActualitesPage() {
 
       {/* All Articles */}
       <AnimatedSection>
-        <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50">
+        <section className="py-20 bg-gradient-to-br from-gray-50 to-blue-50/50 dark:from-slate-900 dark:to-slate-800">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <motion.div
               className="flex items-center mb-12"
@@ -315,8 +319,8 @@ export default function ActualitesPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <BookOpen className="h-8 w-8 text-blue-600 mr-4" />
-              <h2 className="text-3xl font-bold text-gray-900">
+              <BookOpen className="h-8 w-8 text-blue-600 dark:text-blue-400 mr-4" />
+              <h2 className="text-3xl font-light text-gray-900 dark:text-gray-100">
                 Toutes les Actualités
               </h2>
             </motion.div>
@@ -332,7 +336,7 @@ export default function ActualitesPage() {
               >
                 {regularArticles.map((article) => (
                   <motion.div key={article.id} variants={itemVariants}>
-                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden group bg-white">
+                    <Card className="border-0 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 rounded-2xl overflow-hidden group bg-white dark:bg-slate-800">
                       <div className="relative overflow-hidden">
                         <img
                           src={article.image}
@@ -341,6 +345,7 @@ export default function ActualitesPage() {
                         />
                         <div className="absolute top-4 right-4">
                           <Badge
+                            // className={`bg-gray-100 text-gray-800 dark:bg-slate-700 dark:text-gray-200`}
                             className={`${
                               article.category === "Formation"
                                 ? "bg-emerald-100 text-emerald-800"
@@ -360,21 +365,21 @@ export default function ActualitesPage() {
                         </div>
                       </div>
                       <CardContent className="p-6">
-                        <div className="flex items-center text-sm text-gray-500 mb-3">
+                        <div className="flex items-center text-sm text-gray-500 dark:text-gray-400 mb-3">
                           <Calendar className="h-4 w-4 mr-1" />
                           {article.date}
                         </div>
-                        <h3 className="text-lg font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors duration-200 line-clamp-2">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-gray-100 mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200 line-clamp-2">
                           {article.title}
                         </h3>
-                        <p className="text-gray-600 text-sm leading-relaxed mb-4 line-clamp-3">
+                        <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-4 line-clamp-3">
                           {article.excerpt}
                         </p>
                         <Button
                           onClick={() => setSelectedArticle(article)}
                           variant="outline"
                           size="sm"
-                          className="text-blue-600 border-blue-200 hover:bg-blue-50"
+                          className="text-blue-600 border-blue-200 hover:bg-blue-50 dark:text-blue-400 dark:border-blue-400/50 dark:hover:bg-slate-700"
                         >
                           Lire plus
                           <ExternalLink className="h-3 w-3 ml-2" />
@@ -386,7 +391,7 @@ export default function ActualitesPage() {
               </motion.div>
             ) : (
               <div className="text-center py-16">
-                <p className="text-gray-600 text-lg">
+                <p className="text-gray-600 dark:text-gray-400 text-lg">
                   Aucun article à afficher dans cette catégorie.
                 </p>
               </div>
@@ -414,7 +419,7 @@ export default function ActualitesPage() {
           >
             <motion.h2
               variants={itemVariants}
-              className="text-3xl md:text-4xl font-bold mb-6"
+              className="text-3xl md:text-4xl font-light mb-6"
             >
               Restez informés de nos actualités
             </motion.h2>
@@ -432,7 +437,7 @@ export default function ActualitesPage() {
               <input
                 type="email"
                 placeholder="Votre adresse email"
-                className="flex-1 px-4 py-2 rounded-xl text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50"
+                className="flex-1 px-4 py-2 rounded-xl text-gray-900 dark:bg-slate-800 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
               />
               <Button className="bg-white text-blue-600 hover:bg-gray-100 px-8 py-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200">
                 S'abonner
