@@ -26,8 +26,11 @@ export default function Navigation({ currentPage }: NavigationProps) {
     setIsOpen(false);
   };
 
-  const handleEmergencyCall = () => {
-    window.open("tel:+225 05 54 08 92 32", "_self");
+  const handleEmergencyWhatsApp = () => {
+    const phoneNumber = "2250554089232";
+    const message = "Bonjour, j'ai une urgence médicale.";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -67,10 +70,10 @@ export default function Navigation({ currentPage }: NavigationProps) {
           {/* Emergency Button & Mobile Menu */}
           <div className="flex items-center space-x-3">
             <Button 
-              onClick={handleEmergencyCall}
+              onClick={handleEmergencyWhatsApp}
               className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-2 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 hidden sm:block text-sm font-semibold"
             >
-              🚨 Urgences
+              🚨 Urgences (WhatsApp)
             </Button>
             
             {/* Mobile Menu Button */}
@@ -100,10 +103,10 @@ export default function Navigation({ currentPage }: NavigationProps) {
               </Button>
             ))}
             <Button 
-              onClick={handleEmergencyCall}
+              onClick={handleEmergencyWhatsApp}
               className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white rounded-xl shadow-md mt-4"
             >
-              🚨 Urgences - Appeler maintenant
+              🚨 Urgences (WhatsApp)
             </Button>
           </div>
         )}

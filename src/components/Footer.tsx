@@ -22,8 +22,11 @@ export default function Footer() {
   ];
   const [isOpen, setIsOpen] = useState(false);
 
-  const handleEmergencyCall = () => {
-    window.open("tel:+225 05 54 08 92 32", "_self");
+  const handleEmergencyWhatsApp = () => {
+    const phoneNumber = "2250554089232";
+    const message = "Bonjour, j'ai une urgence médicale.";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -127,10 +130,10 @@ export default function Footer() {
             </div>
             <div className="flex items-center space-x-3">
               <Button
-                onClick={handleEmergencyCall}
+                onClick={handleEmergencyWhatsApp}
                 className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-6 py-2 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-sm font-semibold"
               >
-                🚨 +225 05 54 08 92 32
+                🚨 Urgences (WhatsApp)
               </Button>
 
               {/* Mobile Menu Button */}
@@ -151,25 +154,10 @@ export default function Footer() {
 
         {/* Bottom Footer */}
         <div className="py-8 border-t border-gray-100 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center">
-          {/* <div className="flex items-center justify-center space-x-6 mb-4 md:mb-0"> */}
           <p className="text-gray-500 dark:text-gray-500 text-sm text-center w-full">
             © 2025 EPHD-B. Tous droits réservés.
           </p>
-          {/* <div className="flex items-center space-x-4 text-sm text-gray-500">
-              <Button variant="ghost" className="h-auto p-0 text-gray-500 hover:text-blue-600">
-                Mentions légales
-              </Button>
-              <span>•</span>
-              <Button variant="ghost" className="h-auto p-0 text-gray-500 hover:text-blue-600">
-                Politique de confidentialité
-              </Button>
-            </div> */}
         </div>
-        {/* <div className="flex items-center text-gray-500 text-sm">
-            <Clock className="h-4 w-4 mr-2" />
-            <span>Site mis à jour le 26 Août 2025</span>
-          </div> */}
-        {/* </div> */}
       </div>
     </footer>
   );

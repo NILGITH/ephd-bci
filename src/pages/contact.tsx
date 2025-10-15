@@ -1,164 +1,9 @@
 
-import Layout from "@/components/Layout";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Label } from "@/components/ui/label";
-import { motion } from "framer-motion";
-import { AnimatedSection } from "@/components/AnimatedSection";
-import { 
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-  Zap,
-  Building2,
-  Users,
-  FileText,
-  Send,
-  CheckCircle,
-  Stethoscope,
-  X,
-  Menu,
-  Loader2
-} from "lucide-react";
-import { useState } from "react";
-import Link from "next/link";
-import { useToast } from "@/hooks/use-toast";
-
-const contactInfo = [
-  {
-    icon: MapPin,
-    title: "Adresse",
-    details: [
-      "Quartier Blanchon",
-      "Bingerville",
-      "District Autonome d'Abidjan",
-      "Côte d'Ivoire",
-    ],
-    color: "text-blue-600 dark:text-blue-400",
-  },
-  {
-    icon: Phone,
-    title: "Téléphones",
-    details: ["Standard: +225 05 54 08 92 32"],
-    color: "text-emerald-600 dark:text-emerald-400",
-  },
-  {
-    icon: Mail,
-    title: "Adresses Email",
-    details: ["hgbingerville@yahoo.com"],
-    color: "text-blue-600 dark:text-blue-400",
-  },
-  {
-    icon: Clock,
-    title: "Horaires d'ouverture",
-    details: [
-      "Lun-Ven: 7h00 - 18h00",
-      "Samedi: 8h00 - 16h00",
-      "Dimanche: Urgences uniquement",
-      "Urgences: 24h/24, 7j/7",
-    ],
-    color: "text-emerald-600 dark:text-emerald-400",
-  },
-];
-
-const services = [
-  {
-    icon: Stethoscope,
-    name: "Consultation Générale",
-    description: "Prise de rendez-vous pour consultation",
-  },
-  {
-    icon: Zap,
-    name: "Urgences Médicales",
-    description: "Information ou signalement d'urgence",
-  },
-  {
-    icon: Users,
-    name: "Recrutement",
-    description: "Candidature spontanée ou réponse à annonce",
-  },
-  {
-    icon: FileText,
-    name: "Informations",
-    description: "Demande de renseignements généraux",
-  },
-];
-
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-};
-
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: { y: 0, opacity: 1, transition: { duration: 0.6 } },
-};
-
-export default function ContactPage() {
-  const { toast } = useToast();
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    subject: "",
-    message: "",
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setIsSubmitted(true);
-        toast({ 
-          title: "Message envoyé !", 
-          description: "Merci, nous vous répondrons dans les plus brefs délais.",
-        });
-        setFormData({ name: "", email: "", phone: "", service: "", subject: "", message: "" });
-        setTimeout(() => setIsSubmitted(false), 5000); // Reset form view after 5s
-      } else {
-        throw new Error('Failed to send message');
-      }
-    } catch (error) {
-      toast({ 
-        title: "Erreur", 
-        description: "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleChange = (
-    e: React.ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleEmergencyCall = () => {
-    window.open("tel:+225 05 54 08 92 32", "_self");
+  const handleEmergencyWhatsApp = () => {
+    const phoneNumber = "2250554089232";
+    const message = "Bonjour, j'ai une urgence médicale.";
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
   };
 
   return (
@@ -506,29 +351,15 @@ export default function ContactPage() {
             </motion.p>
             <motion.div
               variants={itemVariants}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
-              <div className="flex items-center space-x-3">
-                <Button
-                  onClick={handleEmergencyCall}
-                  className="bg-white hover:to-red-800 text-red-600 px-6 py-2 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 hidden sm:block text-sm font-semibold"
-                >
-                  🚨 +225 05 54 08 92 32
-                </Button>
-
-                {/* Mobile Menu Button */}
-                <Button
-                  variant="ghost"
-                  className="lg:hidden p-2"
-                  onClick={() => setIsOpen(!isOpen)}
-                >
-                  {isOpen ? (
-                    <X className="h-6 w-6" />
-                  ) : (
-                    <Menu className="h-6 w-6" />
-                  )}
-                </Button>
-              </div>
+              <Button
+                onClick={handleEmergencyWhatsApp}
+                className="bg-white hover:bg-gray-200 text-red-600 px-8 py-4 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-200 text-lg font-semibold"
+              >
+                🚨 Urgences (WhatsApp)
+              </Button>
+              
               <Link href="https://www.google.com/maps/dir//Hôpital+Général+de+Bingerville+9467%2B4PH+Bingerville/@5.3603125,-3.8856406,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0xfc1f2eaae9b8d3d:0xfa3287a75ddb7801!2m2!1d-3.8856406!2d5.3603125?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D">
                 <Button
                   variant="outline"
