@@ -1,6 +1,7 @@
 import { Phone, Mail, MapPin, Clock, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useTheme } from "next-themes";
 
 export default function Footer() {
   const quickLinks = [
@@ -22,10 +23,14 @@ export default function Footer() {
   ];
   const [isOpen, setIsOpen] = useState(false);
 
+  const { theme } = useTheme();
+
   const handleEmergencyWhatsApp = () => {
     const phoneNumber = "2250554089232";
     const message = "Bonjour, j'ai une urgence médicale.";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(url, "_blank");
   };
 
@@ -39,13 +44,19 @@ export default function Footer() {
             <div className="flex items-center justify-center md:justify-start space-x-4 mb-6">
               <div className="w-16 h-16 flex-shrink-0">
                 <img
-                  src="/HPHD.jpg"
+                  src={
+                    theme === "dark"
+                      ? "/EPHD-B_logo_dark_mode.png"
+                      : "/EPHD-B_logo_white_mode.png"
+                  }
                   alt="EPHD-B Logo"
                   className="w-full h-full object-contain"
                 />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">EPHD-B</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100">
+                  EPHD-B
+                </h3>
                 <p className="text-sm text-blue-600 dark:text-blue-400 font-medium">
                   Établissement Public Hospitalier
                 </p>

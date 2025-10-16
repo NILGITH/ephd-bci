@@ -1,4 +1,3 @@
-
 "use client";
 
 import * as React from "react";
@@ -16,11 +15,10 @@ export function ThemeSwitch() {
 
   return (
     <div className="fixed bottom-5 right-5 z-50">
-      <Button 
-        variant="outline"
+      <Button
         size="icon"
         onClick={toggleTheme}
-        className="bg-white dark:bg-slate-900 dark:border-slate-800 shadow-lg rounded-full h-14 w-14"
+        className="shadow-lg rounded-full h-14 w-14"
       >
         <Sun className="h-6 w-6 scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
         <Moon className="absolute h-6 w-6 scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
@@ -29,4 +27,3 @@ export function ThemeSwitch() {
     </div>
   );
 }
-
