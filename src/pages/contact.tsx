@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { motion } from "framer-motion";
 import { AnimatedSection } from "@/components/AnimatedSection";
-import { 
+import {
   Phone,
   Mail,
   MapPin,
@@ -20,7 +20,7 @@ import {
   Stethoscope,
   X,
   Menu,
-  Loader2
+  Loader2,
 } from "lucide-react";
 import { useState } from "react";
 import Link from "next/link";
@@ -47,7 +47,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Adresses Email",
-    details: ["hgbingerville@yahoo.com"],
+    details: ["ephb.ci@gmail.com"],
     color: "text-blue-600 dark:text-blue-400",
   },
   {
@@ -114,29 +114,38 @@ export default function ContactPage() {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
+      const response = await fetch("/api/contact", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(formData),
       });
 
       if (response.ok) {
         setIsSubmitted(true);
-        toast({ 
-          title: "Message envoyé !", 
-          description: "Merci, nous vous répondrons dans les plus brefs délais.",
+        toast({
+          title: "Message envoyé !",
+          description:
+            "Merci, nous vous répondrons dans les plus brefs délais.",
         });
-        setFormData({ name: "", email: "", phone: "", service: "", subject: "", message: "" });
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          subject: "",
+          message: "",
+        });
         setTimeout(() => setIsSubmitted(false), 5000); // Reset form view after 5s
       } else {
-        throw new Error('Failed to send message');
+        throw new Error("Failed to send message");
       }
     } catch (error) {
-      toast({ 
-        title: "Erreur", 
-        description: "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.",
+      toast({
+        title: "Erreur",
+        description:
+          "Une erreur est survenue lors de l'envoi du message. Veuillez réessayer.",
         variant: "destructive",
       });
     } finally {
@@ -159,7 +168,9 @@ export default function ContactPage() {
   const handleEmergencyWhatsApp = () => {
     const phoneNumber = "2250554089232";
     const message = "Bonjour, j'ai une urgence médicale.";
-    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(url, "_blank");
   };
 
@@ -287,7 +298,12 @@ export default function ContactPage() {
                       <form onSubmit={handleSubmit} className="space-y-6">
                         <div className="grid md:grid-cols-2 gap-4">
                           <div>
-                            <Label htmlFor="name" className="dark:text-gray-300">Nom complet *</Label>
+                            <Label
+                              htmlFor="name"
+                              className="dark:text-gray-300"
+                            >
+                              Nom complet *
+                            </Label>
                             <Input
                               id="name"
                               name="name"
@@ -299,7 +315,12 @@ export default function ContactPage() {
                             />
                           </div>
                           <div>
-                            <Label htmlFor="email" className="dark:text-gray-300">Email *</Label>
+                            <Label
+                              htmlFor="email"
+                              className="dark:text-gray-300"
+                            >
+                              Email *
+                            </Label>
                             <Input
                               id="email"
                               name="email"
@@ -315,7 +336,12 @@ export default function ContactPage() {
 
                         <div className="grid md:grid-cols-2 gap-4">
                           <div>
-                            <Label htmlFor="phone" className="dark:text-gray-300">Téléphone</Label>
+                            <Label
+                              htmlFor="phone"
+                              className="dark:text-gray-300"
+                            >
+                              Téléphone
+                            </Label>
                             <Input
                               id="phone"
                               name="phone"
@@ -326,7 +352,12 @@ export default function ContactPage() {
                             />
                           </div>
                           <div>
-                            <Label htmlFor="service" className="dark:text-gray-300">Service concerné</Label>
+                            <Label
+                              htmlFor="service"
+                              className="dark:text-gray-300"
+                            >
+                              Service concerné
+                            </Label>
                             <select
                               id="service"
                               name="service"
@@ -348,7 +379,12 @@ export default function ContactPage() {
                         </div>
 
                         <div>
-                          <Label htmlFor="subject" className="dark:text-gray-300">Objet *</Label>
+                          <Label
+                            htmlFor="subject"
+                            className="dark:text-gray-300"
+                          >
+                            Objet *
+                          </Label>
                           <Input
                             id="subject"
                             name="subject"
@@ -361,7 +397,12 @@ export default function ContactPage() {
                         </div>
 
                         <div>
-                          <Label htmlFor="message" className="dark:text-gray-300">Message *</Label>
+                          <Label
+                            htmlFor="message"
+                            className="dark:text-gray-300"
+                          >
+                            Message *
+                          </Label>
                           <Textarea
                             id="message"
                             name="message"
@@ -410,8 +451,8 @@ export default function ContactPage() {
                           <div className="flex items-start space-x-4">
                             <div
                               className={`p-3 rounded-xl bg-gradient-to-br ${
-                                info.color.includes("blue") 
-                                  ? "from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50" 
+                                info.color.includes("blue")
+                                  ? "from-blue-100 to-blue-200 dark:from-blue-900/50 dark:to-blue-800/50"
                                   : "from-emerald-100 to-emerald-200 dark:from-emerald-900/50 dark:to-emerald-800/50"
                               }`}
                             >
@@ -425,7 +466,10 @@ export default function ContactPage() {
                               </h3>
                               <div className="space-y-1">
                                 {info.details.map((detail, idx) => (
-                                  <p key={idx} className="text-gray-600 dark:text-gray-400">
+                                  <p
+                                    key={idx}
+                                    className="text-gray-600 dark:text-gray-400"
+                                  >
                                     {detail}
                                   </p>
                                 ))}
@@ -516,7 +560,7 @@ export default function ContactPage() {
               >
                 🚨 Urgences (WhatsApp)
               </Button>
-              
+
               <Link href="https://www.google.com/maps/dir//Hôpital+Général+de+Bingerville+9467%2B4PH+Bingerville/@5.3603125,-3.8856406,16z/data=!4m8!4m7!1m0!1m5!1m1!1s0xfc1f2eaae9b8d3d:0xfa3287a75ddb7801!2m2!1d-3.8856406!2d5.3603125?entry=ttu&g_ep=EgoyMDI1MDgxOS4wIKXMDSoASAFQAw%3D%3D">
                 <Button
                   variant="outline"
